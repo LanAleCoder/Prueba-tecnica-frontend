@@ -1,0 +1,101 @@
+---
+
+---
+
+<div class="header__theme-switch">
+  <input
+    type="checkbox"
+    name="theme-toggle"
+    id="theme-toggle"
+    aria-label="Cambiar tema"
+  />
+  <label class="theme-toggle-label" for="theme-toggle">
+    <span class="sunicon">☀️</span>
+    <span class="moonicon">🌙</span>
+  </label>
+</div>
+
+<style>
+  #theme-toggle {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+
+  .sunicon {
+    position: relative;
+    z-index: 2;
+  }
+  .moonicon {
+    position: relative;
+    z-index: 2;
+  }
+  .theme-toggle-label {
+    display: flex;
+    justify-content: space-between;
+    background-color: #e4e4e4;
+    border-radius: 30px;
+    width: 130px;
+    align-items: center;
+    height: 50px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: 0.5s;
+    position: relative;
+  }
+  .theme-toggle-label::after {
+    content: "";
+    width: 35px;
+    height: 35px;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 50px;
+    top: 8px;
+    left: 8.7px;
+    transition: 0.5s;
+  }
+
+  .theme-toggle-label:active::after {
+    width: 45px;
+  }
+
+  #theme-toggle:checked + .theme-toggle-label {
+    background-color: #333;
+  }
+  #theme-toggle:checked + .theme-toggle-label::after {
+    left: calc(100% - 8.7px);
+    transform: translate(-100%);
+  }
+
+  @media screen and (max-width: 480px) {
+    .theme-toggle-label {
+      width: 100px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const root = document.documentElement;
+    const switcher = document.getElementById(
+      "theme-toggle"
+    ) as HTMLInputElement;
+    const toggleTheme = () => {
+      if (switcher) {
+        const themeToggleSelector: HTMLInputElement = document.getElementById(
+          "theme-toggle"
+        ) as HTMLInputElement;
+        const setTheme: string = themeToggleSelector.checked ? "dark" : "light";
+
+        root.setAttribute("data-theme", setTheme);
+        localStorage.setItem("theme", setTheme);
+      }
+    };
+
+    switcher?.addEventListener("click", toggleTheme);
+
+    if (root.getAttribute("data-theme") === "dark") {
+      switcher.checked = true;
+    }
+  });
+</script>

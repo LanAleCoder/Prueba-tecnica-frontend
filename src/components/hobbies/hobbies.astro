@@ -1,0 +1,245 @@
+---
+import Trading from "../assets/hobbies/trading.webp";
+import Senderismo from "../assets/hobbies/senderismo.webp";
+import Fotografia from "../assets/hobbies/fotografia.webp";
+import Arquitectura from "../assets/hobbies/arquitecturaSoftware.webp";
+import { Image } from "astro:assets";
+---
+
+<div class="inicio__categorias">
+  <h2 class="inicio__categorias-titulo">Mis hobbies</h2>
+  <p class="inicio__categorias-descripcion">
+    Como alguien apasionado por la tecnología, me gusta explorar diferentes
+    áreas de la misma. Tambien me gusta el tema de inversiones y finanzas, por
+    lo que me gusta estar al tanto de las últimas noticias y tendencias en el
+    mercado. La naturaleza es algo que me apasiona, por lo que me gusta salir a
+    caminar y explorar nuevos lugares.
+  </p>
+  <ul class="inicio__categorias-lista row gy-5 gx-4">
+    <li class="inicio__categoria">
+      <div class="inicio__categoria-url">
+        <div class="inicio__categoria-gradient"></div>
+        <Image
+          src={Trading}
+          width="500"
+          height="315"
+          loading="eager"
+          class="inicio__categoria-img"
+          alt="Imagen de persona visualizando gráfica de un activo financiero"
+        />
+        <h3 class="inicio__categoria-nombre">Finanzas</h3>
+      </div>
+    </li>
+    <li class="inicio__categoria">
+      <div class="inicio__categoria-url">
+        <div class="inicio__categoria-gradient"></div>
+        <Image
+          src={Senderismo}
+          loading="eager"
+          width="500"
+          height="315"
+          class="inicio__categoria-img"
+          alt="Imagen de persona haciendo senderismo"
+        />
+        <h3 class="inicio__categoria-nombre">Senderismo</h3>
+      </div>
+    </li>
+    <li class="inicio__categoria">
+      <div class="inicio__categoria-url">
+        <div class="inicio__categoria-gradient"></div>
+        <Image
+          src={Fotografia}
+          width="500"
+          height="315"
+          loading="eager"
+          class="inicio__categoria-img"
+          alt="Imagen de una camará mostrando el lente"
+        />
+        <h3 class="inicio__categoria-nombre">Fotografía</h3>
+      </div>
+    </li>
+    <li class="inicio__categoria">
+      <div class="inicio__categoria-url">
+        <div class="inicio__categoria-gradient"></div>
+        <Image
+          src={Arquitectura}
+          width="500"
+          height="315"
+          loading="eager"
+          class="inicio__categoria-img"
+          alt="Imagen de la arquitectura de software de un sistema"
+        />
+        <h3 class="inicio__categoria-nombre">Arquitectura de software</h3>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<style>
+  .inicio__categorias {
+    margin-top: 4rem;
+  }
+
+  .inicio__categorias-titulo {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .inicio__categorias-descripcion {
+    max-width: 500px;
+  }
+  .inicio__categoria {
+    flex: 0 0 auto;
+    width: 25%;
+    max-width: 100%;
+    padding-right: calc(2rem / 2);
+    padding-left: calc(2rem / 2);
+    flex: 0 0 auto;
+  }
+  .inicio__categoria:hover .inicio__categoria-url {
+    transform: translate(0, -0.25rem) rotate(0) skew(0) skewY(0) scaleX(1)
+      scaleY(1);
+    box-shadow:
+      0 0 rgba(0, 0, 0, 0),
+      0 0 rgba(0, 0, 0, 0),
+      0 0 rgba(0, 0, 0, 0),
+      0 0 rgba(0, 0, 0, 0),
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+  .inicio__categorias-lista {
+    margin-top: 0.5rem;
+    margin: 0 auto;
+  }
+
+  .inicio__categoria-img {
+    border-radius: 2rem;
+  }
+
+  .inicio__categoria-gradient {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      #62cff4 180%
+    );
+    border-radius: 2rem;
+  }
+  .inicio__categoria-url {
+    position: relative;
+    transition-property:
+      color,
+      background-color,
+      border-color,
+      text-decoration-color,
+      fill,
+      stroke,
+      opacity,
+      box-shadow,
+      transform,
+      filter,
+      backdrop-filter,
+      -webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+    border-radius: 2rem;
+  }
+
+  .inicio__categoria-nombre {
+    position: absolute;
+    bottom: 25px;
+    text-align: center;
+    left: 0;
+    right: 0;
+    color: #fff;
+    font-family: "Nunito Regular", sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+    padding-bottom: 10px;
+  }
+
+  .inicio__categoria-nombre:before {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    visibility: hidden;
+    border-radius: 5px;
+    transform: scaleX(0);
+    margin: 0 auto;
+    right: 0;
+    transition: 0.25s linear;
+  }
+
+  .inicio__categoria:hover
+    .inicio__categoria-url
+    .inicio__categoria-nombre:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+
+  @media screen and (max-width:869px) {
+    .inicio__categoria {
+      width: 50%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .inicio__categorias-titulo {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    .inicio__categorias-descripcion {
+      max-width: 100%;
+      text-align: center;
+    }
+    .inicio__categoria-nombre {
+      font-size: 18px;
+      bottom: 18px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .inicio__categoria-nombre {
+      font-size: 15px;
+      bottom: 18px;
+      padding-bottom: 7px;
+    }
+    .inicio__categoria-nombre::before {
+      width: 35%;
+      height: 2px;
+    }
+  }
+  @media (max-width: 539px) {
+    .inicio__categoria {
+      width: 100%;
+    }
+    .inicio__categoria-nombre {
+      font-size: 20px;
+      bottom: 26px;
+    }
+    .inicio__categoria-nombre:before {
+      width: 40%;
+      height: 3px;
+    }
+  }
+  @media (max-width: 480px) {
+    .inicio__categorias-titulo {
+      font-size: 1.2rem;
+    }
+  }
+  @media (max-width: 380px) {
+    .inicio__categoria-nombre {
+      font-size: 15px;
+      bottom: 15px;
+    }
+  }
+</style>

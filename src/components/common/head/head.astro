@@ -1,0 +1,40 @@
+---
+interface HeadMetaTags {
+  ogTitle?: string;
+  ogDescription?: string;
+  title?: string;
+  pageDescription?: string;
+  imagePage?: string;
+}
+
+const url = Astro.url;
+
+const {
+  ogTitle,
+  ogDescription,
+  title,
+  pageDescription,
+  imagePage,
+}: HeadMetaTags = Astro.props;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title || "Prueba Técnica"}</title>
+  <meta
+    name="description"
+    content={pageDescription ||
+      "Esta es una página para prueba una prueba técnica"}
+  />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content={ogTitle || "Prueba técnica"} />
+  <meta
+    property="og:description"
+    content={ogDescription || "Comparte esta prueba técnica"}
+  />
+  <meta property="og:image" content={imagePage || '../../../../public/meta/default.jpg'} />
+  <meta property="og:url" content={url.toString()} />
+</head>

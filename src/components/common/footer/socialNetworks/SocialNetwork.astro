@@ -1,0 +1,20 @@
+---
+import Link from "../../../ui/links/link.astro";
+interface Props {
+  href: string;
+  ariaLabel: string;
+  className?: string;
+  target?: string;
+}
+
+const { href, ariaLabel, className, target } = Astro.props;
+---
+
+<Link
+  url={href}
+  ariaLabel={ariaLabel}
+  className={className}
+  target={target}
+>
+  <slot />
+</Link>

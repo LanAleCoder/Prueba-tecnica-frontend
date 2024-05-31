@@ -1,0 +1,103 @@
+---
+import React from "../assets/tecnologias/react.astro";
+import Wordpress from "../assets/tecnologias/wordpress.astro";
+import Php from "../assets/tecnologias/php.astro";
+import Laravel from "../assets/tecnologias/laravel.astro";
+import Angular from "../assets/tecnologias/angular.astro";
+import Css from "../assets/tecnologias/css.astro";
+import Node from "../assets/tecnologias/node.astro";
+import { Image } from "astro:assets";
+---
+
+<div class="carousel">
+  <div class="carousel__title">
+    <h2>Tecnologías abarcadas</h2>
+  </div>
+  <div class="carousel__logos-container">
+    <div class="carousel__logos-slide">
+      <React />
+      <Wordpress />
+      <Php />
+      <Laravel />
+      <Angular />
+      <Css />
+      <Node />
+    </div>
+    <div class="carousel__logos-slide">
+      <React />
+      <Wordpress />
+      <Php />
+      <Laravel />
+      <Angular />
+      <Css />
+      <Node />
+    </div>
+  </div>
+</div>
+
+<style>
+  .carousel {
+    margin-top: 7rem;
+  }
+  .carousel__logos-slide {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+    justify-content: center;
+    animation: 25s slide infinite linear;
+  }
+
+  .carousel__logos-container {
+    overflow: hidden;
+    padding: 60px 0;
+    white-space: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 80px;
+    position: relative;
+  }
+
+  .carousel__logos-container::before,
+  .carousel__logos-container::after {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 4;
+  }
+
+  .carousel__logos-container::before {
+    left: 0;
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 0),
+      var(--bg-color)
+    );
+  }
+  .carousel__logos-container::after {
+    right: 0;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      var(--bg-color)
+    );
+  }
+
+  .carousel__logos-container:hover .carousel__logos-slide {
+    animation-play-state: paused;
+  }
+
+  .carousel__title {
+    text-align: center;
+  }
+
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<section class={`section ${className}`}>
+  <slot />
+</section>
+
+<style>
+  .form-contact-container {
+    margin-top: 3rem;
+  }
+</style>
+
+

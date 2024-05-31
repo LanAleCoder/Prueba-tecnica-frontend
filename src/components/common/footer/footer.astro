@@ -1,0 +1,74 @@
+---
+import SocialNetwork from "./socialNetworks/SocialNetwork.astro";
+import Linkedin from "../../assets/icons/Linkedin.astro";
+import Github from "../../assets/icons/Github.astro";
+import Link from "../../ui/links/link.astro";
+---
+
+<footer class="footer">
+  <div class="section-black-footer">
+    <div class="social-networks">
+      <SocialNetwork
+        href="https://www.linkedin.com/in/peter-alexander-61b6081b1"
+        ariaLabel="Sígueme en Linkedin"
+        className="button-social-network"
+        target="_blank"
+      >
+        <Linkedin />
+      </SocialNetwork>
+      <SocialNetwork
+        href="https://github.com/LanAleCoder"
+        ariaLabel="Sígueme en Github"
+        className="button-social-network"
+        target="_blank"
+      >
+        <Github />
+      </SocialNetwork>
+    </div>
+    <div class="footer__links">
+      <nav class="footer__nav">
+        <ul class="footer__links-list">
+          <li class="footer__link-item">
+            <Link url="/"> Inicio </Link>
+          </li>
+          <li class="footer__link-item">
+            <Link url="#contacto"> Contacto </Link>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>© 2024 Diseñado por Peter Alexander. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<style>
+  .social-networks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .section-black-footer {
+    background-color: #232323;
+    padding: 1rem;
+  }
+  .footer__nav {
+    color: #fff;
+    margin-top: 2rem;
+  }
+  .copyright {
+    background-color: #151515;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+  }
+  .footer__links-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+</style>

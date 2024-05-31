@@ -1,0 +1,210 @@
+---
+import Section from "../ui/containers/sections/section.astro";
+---
+
+<Section className="form-contact-container">
+  <h2>Contacto</h2>
+  <form action="" id="form-contact">
+    <div class="form-group-input">
+      <label for="name">Nombre:</label>
+      <input placeholder="Nombre" type="text" id="name" name="name" />
+    </div>
+    <div class="form-group-input">
+      <label for="email">Email:</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        placeholder="email@email.com"
+      />
+    </div>
+    <div class="form-group-input">
+      <label for="message">Mensaje:</label>
+      <textarea
+        id="message"
+        placeholder="Escribe tu mensaje aquí..."
+        name="message"></textarea>
+    </div>
+    <button
+      class="inicio__descripcion-boton inicio__contacto-titulo-boton"
+      type="submit">Contactar</button
+    >
+  </form>
+</Section>
+
+<style>
+  h2 {
+    text-align: center;
+  }
+  .form-group-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+  }
+
+  .form-group-input label {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group-input input,
+  .form-group-input textarea {
+    background-color: #cccccc;
+    padding-left: 2rem;
+    border-radius: 7px;
+    outline-color: #939393;
+  }
+
+  .form-group-input input {
+    min-height: 50px;
+    max-height: 50px;
+  }
+
+  .form-group-input textarea {
+    padding-top: 1rem;
+    resize: none;
+    height: 150px;
+  }
+
+  #form-contact {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.4rem;
+  }
+  .inicio__contacto-titulo-boton {
+    padding: 1rem 2rem;
+    transition-property:
+      color,
+      background-color,
+      border-color,
+      text-decoration-color,
+      fill,
+      stroke,
+      opacity,
+      box-shadow,
+      transform,
+      filter,
+      backdrop-filter,
+      -webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+    /* color: #000; */
+    border-radius: 2rem;
+    cursor: pointer;
+    background: linear-gradient(115deg, #62cff4, #2c67f2);
+  }
+</style>
+
+<script>
+  function handleForm(event: Event) {
+    event.preventDefault();
+  }
+
+  function validateInput(inputs: any[]) {
+    const fields = inputs.map((input) => {
+      const field = document.querySelector(input.selector);
+      let valueField = field.value.trim();
+      let isValidField = false;
+
+      valueField = valueField
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+      if (valueField === "") {
+        field.classList.add("error-field");
+        const errorMessage = document.createElement("span");
+        errorMessage.classList.add("error-field-message");
+        errorMessage.textContent = input.message;
+
+        const existingError = field.nextElementSibling;
+        if (
+          existingError &&
+          existingError.classList.contains("error-field-message")
+        ) {
+          existingError.remove();
+        }
+
+        field.parentNode.insertBefore(errorMessage, field.nextSibling);
+      } else if (!input.regex || input.regex.test(valueField)) {
+        isValidField = true;
+        field.classList.remove("error-field");
+        const existingError = field.nextElementSibling;
+        if (
+          existingError &&
+          existingError.classList.contains("error-field-message")
+        ) {
+          existingError.remove();
+        }
+        field.value = valueField;
+      } else {
+        field.classList.add("error-field");
+        const errorMessage = document.createElement("span");
+        errorMessage.classList.add("error-field-message");
+        errorMessage.textContent = input.errorMessageRegex;
+
+        const existingError = field.nextElementSibling;
+        if (
+          existingError &&
+          existingError.classList.contains("error-field-message")
+        ) {
+          existingError.remove();
+        }
+
+        field.parentNode.insertBefore(errorMessage, field.nextSibling);
+      }
+
+      return isValidField;
+    });
+
+    const isValid = fields.every((result) => result === true);
+    return isValid;
+  }
+
+  const formContactValidations = [
+    {
+      selector: "#name",
+      message: "El nombre es requerido",
+      regex:
+        /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/u,
+      errorMessageRegex: "Solo se permiten letras y espacio",
+    },
+    {
+      selector: "#email",
+      message: "El email es requerido",
+      regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      errorMessageRegex: "Correo electrónico invalido",
+    },
+  ];
+
+  function notReloadPageForm(formSelector: string) {
+    const form = document.querySelector(formSelector);
+    if (form) {
+      form.addEventListener("submit", handleForm);
+    }
+  }
+
+  notReloadPageForm("#form-contact");
+
+  function submitForm(formSelector: string) {
+    const form = document.querySelector(formSelector);
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        handleForm(e);
+        if (!validateInput(formContactValidations)) {
+          return;
+        }
+      });
+    }
+  }
+
+  submitForm("#form-contact");
+</script>

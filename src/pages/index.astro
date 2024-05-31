@@ -1,0 +1,50 @@
+---
+import Layout from "../components/layouts/public/Layout.astro";
+import Hero from "../components/Hero/Hero.astro";
+import Hobbies from "../components/hobbies/hobbies.astro";
+import Tecnologias from "../components/tecnologias/tecnologias.astro";
+import FormContact from "../components/formContact/form-contact.astro";
+---
+
+<Layout
+  ogDescription="!Mira esta prueba técnica¡"
+  ogTitle="Prueba técnica de Peter"
+  title="Prueba Técnica"
+>
+  <main class="main-content">
+    <div class="container">
+      <div class="row-content">
+        <Hero />
+        <Tecnologias />
+        <Hobbies />
+        <FormContact />
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .main-content {
+    min-height: 60vh;
+    margin-bottom: 3rem;
+  }
+  .container {
+    max-width: 1000px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+</style>

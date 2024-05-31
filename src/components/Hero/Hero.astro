@@ -1,0 +1,138 @@
+---
+import Section from "../ui/containers/sections/section.astro";
+import Image from "astro/components/Image.astro";
+import Profile from "./profile.png";
+---
+
+<Section>
+  <div class="inicio__container">
+    <div class="inicio__descripcion">
+      <h1 class="inicio__descripcion-titulo">
+        Peter Alexander
+        <br />
+        Desarrollador
+        <span class="inicio__descripcion-titulo-resaltado"> frontend </span>
+      </h1>
+      <p class="inicio__descripcion-texto">
+        Soy un joven desarrollador frontend con experiencia en el desarrollo de
+        sitios web y aplicaciones web, apasionado por la tecnología y la
+        programación. Me encanta aprender cosas nuevas y enfrentar nuevos
+        desafíos. Siempre me gusta estar en constante aprendizaje y crecimiento,
+        tratando de buscar el minimo detalle para mejorar la calidad de mis
+        proyectos.
+      </p>
+      <a
+        class="inicio__descripcion-boton inicio__contacto-titulo-boton"
+        href="#contacto">Contactame</a
+      >
+    </div>
+    <div class="inicio__banner">
+      <Image
+        src={Profile}
+        class="inicio__baner-img"
+        alt="Foto de perfil de Peter Alexander"
+        loading="eager"
+      />
+    </div>
+  </div>
+</Section>
+
+<style>
+  .inicio__container {
+    display: flex;
+    gap: 2rem;
+  }
+  .inicio__banner {
+    width: 50%;
+    flex: 0 0 auto;
+  }
+  .inicio__baner-img {
+    width: 400px;
+    height: 400px;
+    min-width: 100%;
+    border-radius: 2rem;
+    mask-image: linear-gradient(black 80%, transparent);
+  }
+  .inicio__contacto-titulo-boton {
+    padding: 1rem 2rem;
+    border: 2px #62cff4 solid;
+    transition-property:
+      color,
+      background-color,
+      border-color,
+      text-decoration-color,
+      fill,
+      stroke,
+      opacity,
+      box-shadow,
+      transform,
+      filter,
+      backdrop-filter,
+      -webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+    /* color: #000; */
+    border-radius: 2rem;
+    cursor: pointer;
+  }
+
+  .inicio__contacto-titulo-boton:hover {
+    transform: translate(0, -0.25rem) rotate(0) skew(0) skewY(0) scaleX(1)
+      scaleY(1);
+    background: linear-gradient(115deg, #62cff4, #2c67f2);
+    /* color: var(--color-primary); */
+    border: none;
+  }
+  /* .inicio__descripcion {
+    max-width: 400px;
+  } */
+
+  .inicio__descripcion-titulo {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .inicio__descripcion {
+    width: 50%;
+    flex: 0 0 auto;
+  }
+  .inicio__descripcion-titulo-resaltado {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    background: #62cff4;
+    background: linear-gradient(115deg, #62cff4, #2c67f2);
+  }
+  .inicio__descripcion-boton {
+    text-align: center;
+    width: 50%;
+    margin-top: 2rem;
+  }
+  @media screen and (max-width: 768px) {
+    .inicio__marcas-title {
+      font-size: 1.5rem;
+    }
+    .inicio__container {
+      flex-direction: column;
+    }
+    .inicio__descripcion,
+    .inicio__banner {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .inicio__baner-img {
+      height: 400px;
+      object-fit: contain;
+    }
+    .inicio__descripcion-titulo {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .inicio__descripcion-boton {
+      width: 80%;
+    }
+  }
+</style>

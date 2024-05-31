@@ -1,0 +1,81 @@
+---
+import Logo from "./logo/LOGO.astro";
+
+import SwitchTheme from "./switchTheme/switchTheme.astro";
+import Link from "../../ui/links/link.astro";
+import { Image } from "astro:assets";
+import LOGO from "./logo/LOGO.astro";
+---
+
+<header class="header">
+  <nav class="header__nav" aria-label="Navegación principal">
+    <Link
+      url="/"
+      ariaLabel="botón que redirige a la página de inicio"
+      title="Página principal de la prueba técnica"
+      className="header__link-home"
+    >
+      <!-- <picture class="header__picture">
+        <source
+          srcset={`${LogoMobile.toString()} 768w`}
+          media="(max-width: 480px)"
+          sizes="(min-width: 480px) 768px"
+          type="image/webp"
+        />
+        <img
+          class="header__logo"
+          src={Logo}
+          alt="Logo de la página, tiene un texto que contiene la palabra Dev, de developer"
+        />
+      </picture> 
+    Reemplazdo por image de astro que hace lo mismo
+    -->
+
+      <LOGO />
+    </Link>
+    <ul class="header__nav-ul">
+      <li class="header__nav-li">
+        <Link className="header__nav-link" url="/">Inicio</Link>
+      </li>
+      <li class="header__nav-li">
+        <Link className="header__nav-link" url="#contacto">Contacto</Link>
+      </li>
+    </ul>
+    <SwitchTheme />
+  </nav>
+</header>
+<style>
+  .header {
+    padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .header__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1260px;
+    width: 100%;
+    margin: 0 2rem;
+    padding: 0 1rem;
+  }
+  .header__nav-ul {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+  .header__link-home svg {
+    color: #000;
+  }
+
+  @media (max-width: 480px) {
+    .header__nav {
+      margin: 0 1rem;
+    }
+
+   
+  }
+</style>

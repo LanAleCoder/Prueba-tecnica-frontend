@@ -1,0 +1,41 @@
+---
+interface Props {
+  ariaLabel?: string;
+  title?: string;
+  url?: string;
+  className?: string;
+  target?: string;
+}
+
+const { ariaLabel, title, url, className, target } = Astro.props;
+---
+
+<a
+  aria-label={ariaLabel}
+  title={title}
+  href={url}
+  class={className}
+  target={target}
+>
+  <slot />
+</a>
+
+<style>
+  .button-social-network {
+    background-color: #e3dbdb;
+    border-radius: 30px;
+    padding: 13px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+  }
+
+  @media (max-width: 480px) {
+    .header__link-home {
+      display: none;
+    }
+  }
+</style>
