@@ -3,6 +3,8 @@ import Header from "../../common/header/header.astro";
 import Footer from "../../common/footer/footer.astro";
 import Head from "../../common/head/head.astro";
 import "@fontsource-variable/nunito";
+import  SpeedInsights  from "@vercel/speed-insights/astro"
+
 
 interface Props {
   ogTitle?: string;
@@ -25,6 +27,7 @@ const { ogTitle, ogDescription, title, pageDescription, imagePage } =
     imagePage={imagePage}
   />
   <body>
+    <SpeedInsights/>
     <Header />
     <slot />
     <Footer />

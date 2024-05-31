@@ -6,7 +6,6 @@ interface HeadMetaTags {
   pageDescription?: string;
   imagePage?: string;
 }
-
 const url = Astro.url;
 
 const {
@@ -35,6 +34,12 @@ const {
     property="og:description"
     content={ogDescription || "Comparte esta prueba técnica"}
   />
-  <meta property="og:image" content={imagePage || '../../../../public/meta/default.jpg'} />
+  <meta
+    property="og:image"
+    content={imagePage ||
+      new URL(
+        "https://prueba-tecnica-frontend-os5h.vercel.app/meta/screenshot.png"
+      )}
+  />
   <meta property="og:url" content={url.toString()} />
 </head>
